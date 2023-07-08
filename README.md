@@ -2,7 +2,7 @@
 A repo to document my research and development of facial recognization methods.
 
 ## Eigenfaces
-Set of eigen vectors for face image transformations derived from the ***covariance matrix*** of the probability distribution over the vector space of face images(TODO find out what vector space of image is). The eigenfaces form the basis set of all images used to construct the ***convariance matrix***. The basis can produce all original training images, classification can thus be achieved by comparing how well a face is represented by the basis set, any given face will be composed of a mix of eigenfaces just as any 2d vector would be a mix of (1, 0) and (0, 1).
+Set of eigen vectors for face image transformations derived from the ***covariance matrix*** of the probability distribution over the vector space of face images. The eigenfaces form the basis set of all images used to construct the ***convariance matrix***. The basis can produce all original training images, classification can thus be achieved by comparing how well a face is represented by the basis set, any given face will be composed of a mix of eigenfaces just as any 2d vector would be a mix of (1, 0) and (0, 1).
 
 A set of eigenfaces can be created by ***principal component analysis*** (PCA) performed on a large set of human face images:
 1. All training images must be same lighting and resampled to be the same size. Each image is turned into a vector by flattening second dimension with concatenation.
