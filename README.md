@@ -16,7 +16,15 @@ A set of eigenfaces can be created by ***principal component analysis*** (PCA) p
 Most eigenfaces generate will be redundant, typically only ~40 eigenfaces are needed to identify 95% of human faces.
 
 To compare a new(mean subtracted) face  
+
+### Practical
+- Load images
+- Calculate average face ![average face](/Eigenfaces/average_face.bmp)
+- Substract average from all faces to find parts of face that vary
+- 
+
 ***
+
 ## Notes/Definitions
 ***Covariance***: Joint variability of two random variables, constant describes linear relationship with 1 being perfect correlation, -1 perfect opposite correlation(as X increases Y linearly decreases) and 0 being no correlation.\
 Calculated: $cov(X, Y) = E[(X - E[X])(Y - E[Y])]$, reduced to $E[XY] - E[X]E[Y]$ using expectations linearity.
