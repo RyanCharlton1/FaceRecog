@@ -23,8 +23,9 @@ To compare a new(mean subtracted) face
 
 ![average face](/Eigenfaces/average_face.bmp)
 - Substract average from all faces to find parts of face that vary
-- Calculate covariance(MATLAB can so this)
-- Calculate eigen vectors and values(MATLAB can do this as well)
+- Calculate covariance by multiplying img set by its inverse
+- Calculate eigen vectors and values(MATLAB can do this)
+- Multiply faces by eigenvectors to create eigenfaces
 
 ***
 
