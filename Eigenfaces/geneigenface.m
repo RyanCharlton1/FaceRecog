@@ -4,20 +4,25 @@ function out=geneigenface(setpath)
 
     % read images into array
     % first 2 dirs are .(here) and ..(back)
-    img = zeros(n - 2, 64, 64, 'int8');
+    img = zeros(n - 2, 64 * 64, 'int8');
     for i = 3:n
         path = fullfile(setpath, imgpaths(i).name);
         f = imread(path);
-        img(i - 2, :, :) = f;
+        img(i - 2, :, :) = reshape(f, [1, 64 * 64]);
     end
-    imsave(reshape(uint8(mean(img)), [64, 64]))
+
     % convert array to doubles for upcoming
     img = double(img);
     % make mean subtracted images
-
-    
     img = img - mean(img);
-    
+    c = img * img';
+    % calc covariance 
+    %c = cov(img);
+    [evec, eval] = eig(c);
+    faces = zeros(n - 2, 64 * 64, 'int8');
+    for i = 1:(n-2)
+        faces(i-2) = evec(:, end-(i-3))' * img;
+    end
 
-    out=img;
+    out=faces;
 end
