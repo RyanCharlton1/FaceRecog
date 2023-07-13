@@ -13,19 +13,27 @@ function out=geneigenface(setpath)
 
     % convert array to doubles for upcoming
     img = double(img);
+    % find mean
+    mean = zeros(1, 64 * 64);
+    for i=3:n
+        mean = mean + (1/(n-2))*img(i-2,:);
+    end
     % make mean subtracted images
-    img = img - mean(img);
-
+    for i=1:n-2
+        img(i, :) = img(i, :) - mean;
+    end
+    %img = img - mean(img);
+    imshow(mat2gray(reshape(mean, [64, 64])))
     % calc covariance 
-    c = img * img';
+    c = img' * img;
     %c = cov(img);
     % calc eigen vectors and values
     [evec, eval] = eig(c);
-    
-    faces = zeros(n - 2, 64 * 64, 'int8');
-    for i = 1:(n-2)
-        faces(i-2) = evec(:, end-(i-3))' * img;
-    end
 
-    out=faces;
+    %faces = zeros(n - 2, 64 * 64, 'double');
+    %for i = 1:(n-2)
+    %    faces(i, :) = evec(:, end-(i-1))' * img;
+    %end
+
+    out=evec;
 end
